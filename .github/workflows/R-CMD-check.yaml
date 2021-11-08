@@ -33,7 +33,7 @@ jobs:
       - name: Install R dependencies
         run: |
           install.packages("remotes")
-          remotes::install_deps(dependencies = TRUE)
+          remotes::install_deps(dependencies = TRUE, INSTALL_opts = "${{ matrix.config.multiarch }}")
         shell: Rscript {0}
 
   # CRAN check job
