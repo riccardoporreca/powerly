@@ -11,12 +11,13 @@ on:
 jobs:
 
   install-deps-remotes:
-    name: install-deps-remotes ${{ matrix.config.os }} (${{ matrix.config.r }})
+    name: remotes ${{ matrix.config.multiarch }}${{ matrix.config.os }} (${{ matrix.config.r }})
     runs-on: ${{ matrix.config.os }}
     strategy:
       fail-fast: false
       matrix:
         config:
+          - {os: windows-latest, r: 'release', multiarch: '--no-multiarch'}
           - {os: windows-latest, r: 'release'}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
